@@ -1,3 +1,3 @@
 # Android_Calculator
-# Calculator application on android devide
+Calculator application on android devide
 # Created by Laluna Android team.
