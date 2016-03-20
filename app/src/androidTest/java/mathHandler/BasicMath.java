@@ -4,6 +4,7 @@ package mathHandler;
  * Created by Hung si da on 20/03/2016.
  */
 public class BasicMath {
+<<<<<<< HEAD
 
     public static double plus(double a, double b){
         return a+b;
@@ -34,5 +35,10 @@ public class BasicMath {
     }
 
 
+=======
+    public static double tong(double a,double b){
+        return a+b;
+    }
+>>>>>>> 2b779b468eb8d19708ff77ea2d97309c4c8b8f78
 
 }
