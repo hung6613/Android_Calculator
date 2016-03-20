@@ -12,34 +12,48 @@
     tools:context="com.example.applycation.calculator.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:gravity="right"
-        android:textSize="30sp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/text_SmallResult"
-        android:layout_above="@id/text_Result"
-        />
 
-    <TextView
-        android:gravity="right"
-        android:textSize="60sp"
+    <LinearLayout
+        android:id="@+id/layout_output"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/text_Result"
-        android:layout_above="@id/layout_M"
-        />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_M"
+        android:weightSum="10"
 
+        android:background="#bebcbc">
+        <TextView
+            android:gravity="right"
+            android:textSize="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="5 x 5 = 25"
+            android:id="@+id/text_SmallResult"
+            android:layout_weight="3"
+            android:textColor="#000000" />
+
+        <TextView
+
+            android:gravity="right"
+            android:textSize="80sp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="25"
+            android:textStyle="bold"
+            android:id="@+id/text_Result"
+            android:layout_weight="7"
+            android:textColor="#000000"
+            android:background="#a1a0a0" />
+
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/layout_M"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_above="@id/layout_numpad"
+        android:layout_above="@+id/layout_numpad"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:weightSum="120">
@@ -87,7 +101,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
         android:weightSum="240"
         >
         <TableRow>
@@ -108,13 +121,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="x^2"
-                android:id="@+id/button_Math_pow2" />
+                android:id="@+id/button_Math_xmu2" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1/x"
-                android:id="@+id/button_Math_pow-1" />
+                android:id="@+id/button_Math_1phanX" />
         </TableRow>
         <TableRow>
             <Button
