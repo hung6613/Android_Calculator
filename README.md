@@ -1,5 +1,3 @@
 # Android_Calculator
-Calculator application created by Laluna Android team.
-Members:
-Pham Van Tri
-Le Manh Hung
+# Calculator application on android devide
+# Created by Laluna Android team.
