@@ -1,4 +1,4 @@
-package expression;
+package com.example.applycation.calculator.expression;
 
 import java.util.ArrayList;
 import java.util.Scanner;

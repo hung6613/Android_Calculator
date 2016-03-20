@@ -1,9 +1,9 @@
-package expression;
+package com.example.applycation.calculator.expression;
 
 import java.util.Scanner;
 import java.util.Stack;
 
-import mathHandler.BasicMath;
+import com.example.applycation.calculator.mathHandler.BasicMath;
 
 public class Postfix {
 	private String postfix,infix;

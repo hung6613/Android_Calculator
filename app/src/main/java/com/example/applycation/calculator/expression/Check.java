@@ -1,4 +1,4 @@
-package expression;
+package com.example.applycation.calculator.expression;
 
 import java.util.Scanner;
 import java.util.Stack;

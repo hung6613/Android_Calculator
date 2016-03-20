@@ -13,11 +13,14 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.applycation.calculator.expression.Expression;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView text_Result,text_smallResult;
     Button numpad0,numpad1,numpad2,numpad3,numpad4,numpad5,numpad6,numpad7,numpad8,numpad9,numpadDot;
-
+    Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
+    Button action_Equal,action_CE,action_C;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     //gan View vao cac doi tuong
     public void attachIdToView(){
+
+        //text
         text_Result = (TextView)findViewById(R.id.text_Result);
         text_smallResult = (TextView)findViewById(R.id.text_SmallResult);
+
+        //numpad
         numpad0 = (Button)findViewById(R.id.button_numpad_0);
         numpad1 = (Button)findViewById(R.id.button_numpad_1);
         numpad2 = (Button)findViewById(R.id.button_numpad_2);
@@ -44,9 +51,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         numpad8 = (Button)findViewById(R.id.button_numpad_8);
         numpad9 = (Button)findViewById(R.id.button_numpad_9);
         numpadDot = (Button)findViewById(R.id.button_numpad_dot);
+
+        //math
+        math_Plus = (Button)findViewById(R.id.button_Math_plus);
+        math_Minus = (Button)findViewById(R.id.button_Math_minus);
+        math_Multi = (Button)findViewById(R.id.button_Math_multiply);
+        math_Divide = (Button)findViewById(R.id.button_Math_divide);
+        math_Mod = (Button)findViewById(R.id.button_Math_mod);
+
+        //action
+        action_Equal = (Button)findViewById(R.id.button_action_equal);
+        action_CE = (Button)findViewById(R.id.button_action_CE);
+        action_C = (Button)findViewById(R.id.button_action_C);
     }
     //gan Listener vao cac doi tuong
     public void attachOnClickListener(){
+
+        //numpad
         numpad0.setOnClickListener(this);
         numpad1.setOnClickListener(this);
         numpad2.setOnClickListener(this);
@@ -58,6 +79,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         numpad8.setOnClickListener(this);
         numpad9.setOnClickListener(this);
         numpadDot.setOnClickListener(this);
+
+        //math
+        math_Plus.setOnClickListener(this);
+        math_Minus.setOnClickListener(this);
+        math_Multi.setOnClickListener(this);
+        math_Divide.setOnClickListener(this);
+        math_Mod.setOnClickListener(this);
+
+        //action
+        action_Equal.setOnClickListener(this);
+        action_CE.setOnClickListener(this);
+        action_C.setOnClickListener(this);
+
     }
     //Them noi dung vao TextView
     public void addText(TextView textView,String content){
@@ -67,7 +101,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //cai dat Listener
     @Override
     public void onClick(View v) {
+        if(Expression.containEqual(text_smallResult.getText().toString())){
+            String temp = Expression.getLastNumber(text_smallResult.getText().toString());
+            text_smallResult.setText(temp);
+            text_Result.setText(temp);
+        }
         switch (v.getId()){
+
+            //Numpad
             case R.id.button_numpad_0 :
                 addText(text_Result,"0");
                 addText(text_smallResult,"0");
@@ -111,6 +152,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_numpad_dot:
                 addText(text_Result,".");
                 addText(text_smallResult,".");
+                break;
+
+            //Math
+            case R.id.button_Math_plus:
+                addText(text_smallResult," + ");
+                text_Result.setText("");
+                break;
+            case R.id.button_Math_minus:
+                addText(text_smallResult," - ");
+                text_Result.setText("");
+                break;
+            case R.id.button_Math_multiply:
+                addText(text_smallResult," * ");
+                text_Result.setText("");
+                break;
+            case R.id.button_Math_divide:
+                addText(text_smallResult," / ");
+                text_Result.setText("");
+                break;
+            case R.id.button_Math_mod:
+                addText(text_smallResult," % ");
+                text_Result.setText("");
+                break;
+
+            //Action
+            case R.id.button_action_equal:
+                Expression expression = new Expression(text_smallResult.getText().toString());
+                expression.solve();
+                addText(text_smallResult," = "+expression.getValue());
+                text_Result.setText((int)expression.getValue()+"");
+                break;
+            case R.id.button_action_CE:
+                text_smallResult.setText("");
+                text_Result.setText("");
+                break;
+            case R.id.button_action_C:
+                text_smallResult.setText("");
+                text_Result.setText("");
                 break;
             default:
                 break;
