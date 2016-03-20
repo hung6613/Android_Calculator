@@ -53,7 +53,7 @@ public class Postfix {
 	}
 	private Scanner scan,kb;
 
-	//Viet code su dung ham BasicMath o day
+	//Viet code su dung ham BasicMath o day nha
 	public double toValue(){
 		if(postfix.equals("")) return 0;
 		kb = new Scanner(System.in);
@@ -73,10 +73,10 @@ public class Postfix {
 				double result;
 				switch (x) {
 					case "+" :	result = BasicMath.tong(a,b);	break;
-					case "-" :	result = a - b;	break;
-					case "*" :	result = a * b;	break;
-					case "/" :	result = a / b;	break;
-					case "%" :	result = a % b;	break;
+					case "-" :	result = BasicMath.minus(a,b);	break;
+					case "*" :	result = BasicMath.multiply(a,b);	break;
+					case "/" :	result = BasicMath.divide(a,b);	break;
+					case "%" :	result = BasicMath.mod(a, b);	break;
 					case "^" :	result = Math.pow(a,b);break;
 					default  :  result = 0; break;
 				}

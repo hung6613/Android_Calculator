@@ -30,9 +30,10 @@ public class Expression {
         this.value = value;
     }
 
-    public void solve(){
+    public double solve(){
         Infix expression_infix = new Infix(expression);
         Postfix expression_postfix = new Postfix(expression_infix.toPostfix());
         value = expression_postfix.toValue();
+        return value;
     }
 }
