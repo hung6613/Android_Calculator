@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         attachIdToView();
         attachOnClickListener();
 
-        text_Result.setText("");
+        text_Result.setText("0");
         text_smallResult.setText("");
     }
     //gan View vao cac doi tuong
