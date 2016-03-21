@@ -16,7 +16,7 @@ public class Expression {
 
         setExpression(expression);
     }
-    public static String getLastNumber(String str){
+    public static String getLastString(String str){
 
         String temp = "";
         Scanner scanner = new Scanner(str);

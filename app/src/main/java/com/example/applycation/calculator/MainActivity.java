@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.applycation.calculator.expression.Check;
 import com.example.applycation.calculator.expression.Expression;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -98,14 +99,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String oldText = textView.getText().toString();
         textView.setText(oldText + content);
     }
+
     //cai dat Listener
     @Override
     public void onClick(View v) {
         if(Expression.containEqual(text_smallResult.getText().toString())){
-            String temp = Expression.getLastNumber(text_smallResult.getText().toString());
+            /*String temp = Expression.getLastNumber(text_smallResult.getText().toString());
             text_smallResult.setText(temp);
-            text_Result.setText(temp);
+            text_Result.setText(temp);*/
+            text_smallResult.setText(text_Result.getText());
         }
+        //Neu bieu thuc o smallResult chua dau = thi moi lan goi Listener se gan lai ket qua o Result cho smallResult
+
+        /*if(!Check.isOperator(Expression.getLastString(text_smallResult.getText().toString()))){
+            text_smallResult.setText("");
+        }*/
+        //Neu phan tu cuoi cung khong phai la toan tu thi xoa smallResult va nhap lai.
+
         switch (v.getId()){
 
             //Numpad
@@ -177,12 +187,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             //Action
+            //Xu li dau =
+            //*******************************************************************************
             case R.id.button_action_equal:
+
                 Expression expression = new Expression(text_smallResult.getText().toString());
-                expression.solve();
-                addText(text_smallResult," = "+expression.getValue());
-                text_Result.setText((int)expression.getValue()+"");
+                if(!Expression.containEqual(expression.getExpression())) {
+                    expression.solve();
+                    addText(text_smallResult, " = " + expression.getValue());
+                    text_Result.setText((int) expression.getValue() + "");
+                }
+                else{
+                    text_smallResult.setText(text_Result.getText());
+                }
                 break;
+            //********************************************************************************
+
             case R.id.button_action_CE:
                 text_smallResult.setText("");
                 text_Result.setText("");
@@ -195,6 +215,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
