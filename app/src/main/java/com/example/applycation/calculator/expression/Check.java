@@ -46,7 +46,7 @@ public class Check {
 	}
 	//Kiem tra toan tu
 	public static boolean isOperator(String str){
-		return OPERATOR.indexOf(str.charAt(0))>-1;	
+		return OPERATOR.indexOf(str.charAt(0))>-1 && str.length()==1;
 	}
 	//kiem tra 2 phan tu ngoai cung co phai la NUMBER khong
 	public static boolean isOutermostElementNumber(Stack<String> stack) {
