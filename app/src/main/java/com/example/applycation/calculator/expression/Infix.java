@@ -35,7 +35,7 @@ public class Infix {
 		ArrayList<String> check = new ArrayList<String>();
 		while(scan.hasNext())
 			check.add(scan.next());
-		if(Check.isOperator(check.get(0))) 
+		if(Check.isOperator(check.get(0)))
 			return false;
 		if(Check.isOperator(check.get(check.size()-1))) 
 			return false;

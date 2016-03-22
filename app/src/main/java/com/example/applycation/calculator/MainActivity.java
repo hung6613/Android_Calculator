@@ -18,10 +18,12 @@ import com.example.applycation.calculator.expression.Expression;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    String string_Text = "";
+    String string_SmallText = "";
     TextView text_Result,text_smallResult;
     Button numpad0,numpad1,numpad2,numpad3,numpad4,numpad5,numpad6,numpad7,numpad8,numpad9,numpadDot;
     Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
-    Button action_Equal,action_CE,action_C;
+    Button action_Equal,action_CE,action_C, action_Back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action_Equal = (Button)findViewById(R.id.button_action_equal);
         action_CE = (Button)findViewById(R.id.button_action_CE);
         action_C = (Button)findViewById(R.id.button_action_C);
+        action_Back = (Button)findViewById(R.id.button_action_back);
     }
     //gan Listener vao cac doi tuong
     public void attachOnClickListener(){
@@ -92,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action_Equal.setOnClickListener(this);
         action_CE.setOnClickListener(this);
         action_C.setOnClickListener(this);
+        action_Back.setOnClickListener(this);
 
     }
     //Them noi dung vao TextView
@@ -203,13 +207,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             //********************************************************************************
 
+
+            case R.id.button_action_back:
+                string_Text = text_Result.getText().toString();
+                string_SmallText = text_smallResult.getText().toString();
+                //String str_Back = string_Text.substring(0,string_Text.length()-2).toString();
+                //text_Result.setText(str_Back);
+                if(string_Text.length()>1){
+                    String str_Back = string_Text.substring(0,string_Text.length()-1).toString();
+                    String str_BackSmall = string_SmallText.substring(0,string_SmallText.length()-1).toString();
+                    text_Result.setText(str_Back);
+                    text_smallResult.setText(str_BackSmall);
+                }
+                else{
+                    text_Result.setText("0");
+                }
+                break;
             case R.id.button_action_CE:
-                text_smallResult.setText("");
-                text_Result.setText("");
+                //text_smallResult.setText("");
+                text_Result.setText("0");
                 break;
             case R.id.button_action_C:
                 text_smallResult.setText("");
-                text_Result.setText("");
+                text_Result.setText("0");
                 break;
             default:
                 break;
