@@ -15,15 +15,19 @@ import android.widget.TextView;
 
 import com.example.applycation.calculator.expression.Check;
 import com.example.applycation.calculator.expression.Expression;
+import com.example.applycation.calculator.memory.Memory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     String string_Text = "";
-    String string_SmallText = "";
+    Memory M = new Memory();
+    //*********************************************************************************************
     TextView text_Result,text_smallResult;
     Button numpad0,numpad1,numpad2,numpad3,numpad4,numpad5,numpad6,numpad7,numpad8,numpad9,numpadDot;
     Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
     Button action_Equal,action_CE,action_C, action_Back;
+    Button m_Plus, m_Minus, m_Clear, m_Result, m_Save, m_Memory;
+    //*********************************************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +71,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action_CE = (Button)findViewById(R.id.button_action_CE);
         action_C = (Button)findViewById(R.id.button_action_C);
         action_Back = (Button)findViewById(R.id.button_action_back);
+        //M
+        m_Clear = (Button)findViewById(R.id.buttonMC);
+        m_Memory = (Button)findViewById(R.id.buttonMScroll);
+        m_Minus = (Button)findViewById(R.id.buttonMMinus);
+        m_Plus = (Button)findViewById(R.id.buttonMPlus);
+        m_Result = (Button)findViewById(R.id.buttonMR);
+        m_Save = (Button)findViewById(R.id.buttonMS);
+
     }
     //gan Listener vao cac doi tuong
     public void attachOnClickListener(){
@@ -96,6 +108,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action_CE.setOnClickListener(this);
         action_C.setOnClickListener(this);
         action_Back.setOnClickListener(this);
+
+        //M
+        m_Save.setOnClickListener(this);
+        m_Minus.setOnClickListener(this);
+        m_Result.setOnClickListener(this);
+        m_Memory.setOnClickListener(this);
+        m_Clear.setOnClickListener(this);
+        m_Plus.setOnClickListener(this);
 
     }
     //Them noi dung vao TextView
@@ -207,21 +227,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             //********************************************************************************
 
+            //xu li M
+            //********************************************************************************
+            case R.id.buttonMPlus:
+                string_Text = text_Result.getText().toString();
+                M.Mplus(Double.parseDouble(string_Text));
+                text_Result.setText("0");
+                text_smallResult.setText(string_Text);
+                break;
+            case R.id.buttonMMinus:
+                string_Text = text_Result.getText().toString();
+                M.Mminus(Double.parseDouble(string_Text));
+                text_Result.setText("0");
+                text_smallResult.setText(string_Text);
+                break;
+            case R.id.buttonMS:
+                string_Text = text_Result.getText().toString();
+                M.MSave(Double.parseDouble(string_Text));
+                text_Result.setText("0");
+                text_smallResult.setText(string_Text);
+                break;
+            case R.id.buttonMR:
+                string_Text = M.MResult()+"";
+                text_Result.setText(string_Text);
+                break;
+            case R.id.buttonMC:
+                M.MClear();
+                text_Result.setText("0");
+                break;
 
+
+
+            //xu li C, CE, back
+            //*********************************************************************************
             case R.id.button_action_back:
                 string_Text = text_Result.getText().toString();
-                string_SmallText = text_smallResult.getText().toString();
-                //String str_Back = string_Text.substring(0,string_Text.length()-2).toString();
-                //text_Result.setText(str_Back);
-                if(string_Text.length()>1){
+                if(string_Text.length()>1 ){
                     String str_Back = string_Text.substring(0,string_Text.length()-1).toString();
-                    String str_BackSmall = string_SmallText.substring(0,string_SmallText.length()-1).toString();
                     text_Result.setText(str_Back);
-                    text_smallResult.setText(str_BackSmall);
                 }
-                else{
-                    text_Result.setText("0");
-                }
+                else    text_Result.setText("0");
                 break;
             case R.id.button_action_CE:
                 //text_smallResult.setText("");
