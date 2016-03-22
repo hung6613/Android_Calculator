@@ -26,8 +26,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button numpad0,numpad1,numpad2,numpad3,numpad4,numpad5,numpad6,numpad7,numpad8,numpad9,numpadDot;
     Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
     Button action_Equal,action_CE,action_C, action_Back;
+<<<<<<< HEAD
     Button m_Plus, m_Minus, m_Clear, m_Result, m_Save, m_Memory;
     //*********************************************************************************************
+=======
+
+
+>>>>>>> ab229564a14ec9c4cbd16ad71de3b5c6a8497106
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
