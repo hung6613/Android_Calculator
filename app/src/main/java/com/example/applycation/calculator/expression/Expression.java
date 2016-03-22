@@ -46,6 +46,14 @@ public class Expression {
             if(str.charAt(i)=='=') return true;
         return false;
     }
+    public static boolean containOperator(String str){
+        Scanner scan = new Scanner(str);
+        while(scan.hasNext()){
+            if(Check.isOperator(scan.next()))
+                return true;
+        }
+        return false;
+    }
     public double solve(){
         Infix expression_infix = new Infix(expression);
         Postfix expression_postfix = new Postfix(expression_infix.toPostfix());

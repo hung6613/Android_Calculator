@@ -19,20 +19,17 @@ import com.example.applycation.calculator.memory.Memory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String string_Text = "";
     Memory M = new Memory();
     //*********************************************************************************************
+    String string_Text = "";
+    String expressionString = "";
     TextView text_Result,text_smallResult;
-    Button numpad0,numpad1,numpad2,numpad3,numpad4,numpad5,numpad6,numpad7,numpad8,numpad9,numpadDot;
+    Button numpad[],numpadDot;
     Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
     Button action_Equal,action_CE,action_C, action_Back;
-<<<<<<< HEAD
+
     Button m_Plus, m_Minus, m_Clear, m_Result, m_Save, m_Memory;
-    //*********************************************************************************************
-=======
 
-
->>>>>>> ab229564a14ec9c4cbd16ad71de3b5c6a8497106
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,16 +49,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         text_smallResult = (TextView)findViewById(R.id.text_SmallResult);
 
         //numpad
-        numpad0 = (Button)findViewById(R.id.button_numpad_0);
-        numpad1 = (Button)findViewById(R.id.button_numpad_1);
-        numpad2 = (Button)findViewById(R.id.button_numpad_2);
-        numpad3 = (Button)findViewById(R.id.button_numpad_3);
-        numpad4 = (Button)findViewById(R.id.button_numpad_4);
-        numpad5 = (Button)findViewById(R.id.button_numpad_5);
-        numpad6 = (Button)findViewById(R.id.button_numpad_6);
-        numpad7 = (Button)findViewById(R.id.button_numpad_7);
-        numpad8 = (Button)findViewById(R.id.button_numpad_8);
-        numpad9 = (Button)findViewById(R.id.button_numpad_9);
+        numpad = new Button[10];
+        numpad[0] = (Button)findViewById(R.id.button_numpad_0);
+        numpad[1] = (Button)findViewById(R.id.button_numpad_1);
+        numpad[2] = (Button)findViewById(R.id.button_numpad_2);
+        numpad[3] = (Button)findViewById(R.id.button_numpad_3);
+        numpad[4] = (Button)findViewById(R.id.button_numpad_4);
+        numpad[5] = (Button)findViewById(R.id.button_numpad_5);
+        numpad[6] = (Button)findViewById(R.id.button_numpad_6);
+        numpad[7] = (Button)findViewById(R.id.button_numpad_7);
+        numpad[8] = (Button)findViewById(R.id.button_numpad_8);
+        numpad[9] = (Button)findViewById(R.id.button_numpad_9);
         numpadDot = (Button)findViewById(R.id.button_numpad_dot);
 
         //math
@@ -89,16 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void attachOnClickListener(){
 
         //numpad
-        numpad0.setOnClickListener(this);
-        numpad1.setOnClickListener(this);
-        numpad2.setOnClickListener(this);
-        numpad3.setOnClickListener(this);
-        numpad4.setOnClickListener(this);
-        numpad5.setOnClickListener(this);
-        numpad6.setOnClickListener(this);
-        numpad7.setOnClickListener(this);
-        numpad8.setOnClickListener(this);
-        numpad9.setOnClickListener(this);
+        for(int i=0;i<numpad.length;i++){
+            numpad[i].setOnClickListener(this);
+        }
         numpadDot.setOnClickListener(this);
 
         //math
@@ -132,86 +123,97 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //cai dat Listener
     @Override
     public void onClick(View v) {
-        if(Expression.containEqual(text_smallResult.getText().toString())){
-            /*String temp = Expression.getLastNumber(text_smallResult.getText().toString());
-            text_smallResult.setText(temp);
-            text_Result.setText(temp);*/
-            text_smallResult.setText(text_Result.getText());
-        }
+        //*
+        //khong dung cho truong button equal
         //Neu bieu thuc o smallResult chua dau = thi moi lan goi Listener se gan lai ket qua o Result cho smallResult
 
+        if(     v.getId()!=R.id.button_action_equal
+                &&  Expression.containEqual(text_smallResult.getText().toString())
+                ){
+            expressionString = text_Result.getText().toString();
+            text_smallResult.setText(expressionString);
+        }
+
+        //Khong su dung
+        //*
+        //Neu phan tu cuoi cung khong phai la toan tu thi xoa smallResult va nhap lai.
         /*if(!Check.isOperator(Expression.getLastString(text_smallResult.getText().toString()))){
             text_smallResult.setText("");
         }*/
-        //Neu phan tu cuoi cung khong phai la toan tu thi xoa smallResult va nhap lai.
 
+        //Listener cho tung nut
         switch (v.getId()){
 
             //Numpad
             case R.id.button_numpad_0 :
                 addText(text_Result,"0");
-                addText(text_smallResult,"0");
+                expressionString += "0";
                 break;
             case R.id.button_numpad_1 :
                 addText(text_Result,"1");
-                addText(text_smallResult,"1");
+                expressionString += "1";
                 break;
             case R.id.button_numpad_2 :
                 addText(text_Result,"2");
-                addText(text_smallResult,"2");
+                expressionString += "2";
                 break;
             case R.id.button_numpad_3 :
                 addText(text_Result,"3");
-                addText(text_smallResult,"3");
+                expressionString += "3";
                 break;
             case R.id.button_numpad_4 :
                 addText(text_Result,"4");
-                addText(text_smallResult,"4");
+                expressionString += "4";
                 break;
             case R.id.button_numpad_5 :
                 addText(text_Result,"5");
-                addText(text_smallResult,"5");
+                expressionString += "5";
                 break;
             case R.id.button_numpad_6 :
                 addText(text_Result,"6");
-                addText(text_smallResult,"6");
+                expressionString += "6";
                 break;
             case R.id.button_numpad_7 :
                 addText(text_Result,"7");
-                addText(text_smallResult,"7");
+                expressionString += "7";
                 break;
             case R.id.button_numpad_8 :
                 addText(text_Result,"8");
-                addText(text_smallResult,"8");
+                expressionString += "8";
                 break;
             case R.id.button_numpad_9 :
                 addText(text_Result,"9");
-                addText(text_smallResult,"9");
+                expressionString += "9";
                 break;
             case R.id.button_numpad_dot:
                 addText(text_Result,".");
-                addText(text_smallResult,".");
+                expressionString += ".";
                 break;
 
             //Math
             case R.id.button_Math_plus:
-                addText(text_smallResult," + ");
+                expressionString += " + ";
+                text_smallResult.setText(expressionString);
                 text_Result.setText("");
                 break;
             case R.id.button_Math_minus:
-                addText(text_smallResult," - ");
+                expressionString += " - ";
+                text_smallResult.setText(expressionString);
                 text_Result.setText("");
                 break;
             case R.id.button_Math_multiply:
-                addText(text_smallResult," * ");
+                expressionString += " * ";
+                text_smallResult.setText(expressionString);
                 text_Result.setText("");
                 break;
             case R.id.button_Math_divide:
-                addText(text_smallResult," / ");
+                expressionString += " / ";
+                text_smallResult.setText(expressionString);
                 text_Result.setText("");
                 break;
             case R.id.button_Math_mod:
-                addText(text_smallResult," % ");
+                expressionString += " % ";
+                text_smallResult.setText(expressionString);
                 text_Result.setText("");
                 break;
 
@@ -220,58 +222,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //*******************************************************************************
             case R.id.button_action_equal:
 
-                Expression expression = new Expression(text_smallResult.getText().toString());
-                if(!Expression.containEqual(expression.getExpression())) {
+                if(     !Expression.containEqual(expressionString)   //neu ko co dau = thi moi chay
+                        &&  Expression.containOperator(expressionString) //neu bieu thuc chi co 1 so thi ko chay
+
+                        ) {
+                    Expression expression = new Expression(expressionString);
                     expression.solve();
-                    addText(text_smallResult, " = " + expression.getValue());
+                    expressionString += " = " + expression.solve();
                     text_Result.setText((int) expression.getValue() + "");
                 }
                 else{
-                    text_smallResult.setText(text_Result.getText());
+                    expressionString = text_Result.getText().toString();
                 }
+                text_smallResult.setText(expressionString);
                 break;
             //********************************************************************************
 
-            //xu li M
-            //********************************************************************************
-            case R.id.buttonMPlus:
-                string_Text = text_Result.getText().toString();
-                M.Mplus(Double.parseDouble(string_Text));
-                text_Result.setText("0");
-                text_smallResult.setText(string_Text);
-                break;
-            case R.id.buttonMMinus:
-                string_Text = text_Result.getText().toString();
-                M.Mminus(Double.parseDouble(string_Text));
-                text_Result.setText("0");
-                text_smallResult.setText(string_Text);
-                break;
-            case R.id.buttonMS:
-                string_Text = text_Result.getText().toString();
-                M.MSave(Double.parseDouble(string_Text));
-                text_Result.setText("0");
-                text_smallResult.setText(string_Text);
-                break;
-            case R.id.buttonMR:
-                string_Text = M.MResult()+"";
-                text_Result.setText(string_Text);
-                break;
-            case R.id.buttonMC:
-                M.MClear();
-                text_Result.setText("0");
-                break;
 
-
-
-            //xu li C, CE, back
-            //*********************************************************************************
             case R.id.button_action_back:
                 string_Text = text_Result.getText().toString();
-                if(string_Text.length()>1 ){
+                expressionString = text_smallResult.getText().toString();
+                //String str_Back = string_Text.substring(0,string_Text.length()-2).toString();
+                //text_Result.setText(str_Back);
+                if(string_Text.length()>1){
                     String str_Back = string_Text.substring(0,string_Text.length()-1).toString();
+                    String str_BackSmall = expressionString.substring(0, expressionString.length()-1).toString();
                     text_Result.setText(str_Back);
+                    text_smallResult.setText(str_BackSmall);
                 }
-                else    text_Result.setText("0");
+                else{
+                    text_Result.setText("0");
+                }
                 break;
             case R.id.button_action_CE:
                 //text_smallResult.setText("");
