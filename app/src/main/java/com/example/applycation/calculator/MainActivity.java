@@ -162,24 +162,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.button_Math_minus:
-                expressionString += " - ";
-                text_smallResult.setText(expressionString);
-                text_Result.setText("");
+                if(expressionString.equals("")){
+                    expressionString = resultString;
+                    expressionString += " - ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
+                else{
+                    expressionString += " - ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
                 break;
             case R.id.button_Math_multiply:
-                expressionString += " * ";
-                text_smallResult.setText(expressionString);
-                text_Result.setText("");
+                if(expressionString.equals("")){
+                    expressionString = resultString;
+                    expressionString += " * ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
+                else{
+                    expressionString += " * ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
                 break;
             case R.id.button_Math_divide:
-                expressionString += " / ";
-                text_smallResult.setText(expressionString);
-                text_Result.setText("");
+                if(expressionString.equals("")){
+                    expressionString = resultString;
+                    expressionString += " / ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
+                else{
+                    expressionString += " / ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
                 break;
             case R.id.button_Math_mod:
-                expressionString += " % ";
-                text_smallResult.setText(expressionString);
-                text_Result.setText("");
+                if(expressionString.equals("")){
+                    expressionString = resultString;
+                    expressionString += " % ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
+                else{
+                    expressionString += " % ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
                 break;
 
             //Action
