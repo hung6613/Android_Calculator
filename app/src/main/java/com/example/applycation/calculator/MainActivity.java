@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView.setText(oldText + content);
     }
 
+
     //cai dat Listener
     @Override
     public void onClick(View v) {
@@ -128,9 +129,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         for (int i = 0; i < numpad.length; i++) {
             if (numpad[i].getId() == v.getId()) {
+                if(Expression.containEqual(text_smallResult.getText()+"")){
+                    expressionString="";
+                    text_Result.setText("");
+                }
                 expressionString += i + "";
-                addText(text_Result,i+"");
+                addText(text_Result, i + "");
                 text_smallResult.setText(expressionString);
+
             }
         }
 
