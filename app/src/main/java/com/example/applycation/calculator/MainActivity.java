@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button action_Equal,action_CE,action_C, action_Back;
 
     Button m_Plus, m_Minus, m_Clear, m_Result, m_Save, m_Memory;
+    Button math_MotphanX,math_SQRT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         math_Multi = (Button)findViewById(R.id.button_Math_multiply);
         math_Divide = (Button)findViewById(R.id.button_Math_divide);
         math_Mod = (Button)findViewById(R.id.button_Math_mod);
+        math_MotphanX= (Button) findViewById(R.id.button_Math_1phanX);
+        math_SQRT= (Button) findViewById(R.id.button_Math_sqrt);
 
         //action
         action_Equal = (Button)findViewById(R.id.button_action_equal);
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         math_Multi.setOnClickListener(this);
         math_Divide.setOnClickListener(this);
         math_Mod.setOnClickListener(this);
+        math_MotphanX.setOnClickListener(this);
 
         //action
         action_Equal.setOnClickListener(this);
@@ -238,6 +242,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             //********************************************************************************
 
+           /* case R.id.button_Math_1phanX:
+                double x=1/ Double.parseDouble(text_Result.getText()+"");
+               // expressionString
+                text_Result.setText(x+"");*/
+
+            //case R.id.button_Math_sqrt:
 
             case R.id.button_action_back:
                 string_Text = text_Result.getText().toString();
