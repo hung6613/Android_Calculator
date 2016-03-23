@@ -3,8 +3,6 @@ package com.example.applycation.calculator.expression;
 import java.util.Scanner;
 import java.util.Stack;
 
-import com.example.applycation.calculator.mathHandler.BasicMath;
-
 public class Postfix {
 	private String postfix,infix;
 	private double value;

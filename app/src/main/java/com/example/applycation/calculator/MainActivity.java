@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.applycation.calculator.expression.Check;
 import com.example.applycation.calculator.expression.Expression;
-import com.example.applycation.calculator.mathHandler.BasicMath;
+import com.example.applycation.calculator.expression.BasicMath;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
