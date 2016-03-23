@@ -19,16 +19,16 @@ import com.example.applycation.calculator.memory.Memory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Memory M = new Memory();
-
     String expressionString = "";
-    String resultString = "";
+
     TextView text_Result,text_smallResult;
+
     Button numpad[],numpadDot;
+
     Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
+
     Button action_Equal,action_CE,action_C, action_Back;
 
-    Button m_Plus, m_Minus, m_Clear, m_Result, m_Save, m_Memory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action_CE = (Button)findViewById(R.id.button_action_CE);
         action_C = (Button)findViewById(R.id.button_action_C);
         action_Back = (Button)findViewById(R.id.button_action_back);
-        //M
-        m_Clear = (Button)findViewById(R.id.buttonMC);
-        m_Memory = (Button)findViewById(R.id.buttonMScroll);
-        m_Minus = (Button)findViewById(R.id.buttonMMinus);
-        m_Plus = (Button)findViewById(R.id.buttonMPlus);
-        m_Result = (Button)findViewById(R.id.buttonMR);
-        m_Save = (Button)findViewById(R.id.buttonMS);
+
+
 
     }
     //gan Listener vao cac doi tuong
@@ -105,13 +100,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action_C.setOnClickListener(this);
         action_Back.setOnClickListener(this);
 
-        //M
-        m_Save.setOnClickListener(this);
-        m_Minus.setOnClickListener(this);
-        m_Result.setOnClickListener(this);
-        m_Memory.setOnClickListener(this);
-        m_Clear.setOnClickListener(this);
-        m_Plus.setOnClickListener(this);
 
     }
     //Them noi dung vao TextView
@@ -124,189 +112,79 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        //Listener for numpad
-        for(int i=0;i<numpad.length;i++){
-            if(v.getId()==numpad[i].getId()){
-                if(Expression.containEqual(text_smallResult.getText().toString())){
-                    text_Result.setText(i+"");
-                    text_smallResult.setText(i+"");
-                    expressionString += i+"";
-                }
-                else {
-                    addText(text_Result,i+"");
-                    expressionString += i+"";
-                }
+        if(action_Equal.getId()==v.getId()&&expressionString!=""){
+            Expression e = new Expression(expressionString);
+            e.solve();
+            text_Result.setText(e.getValue()+"");
+            text_smallResult.setText(expressionString+ " = " +e.getValue());
+            expressionString = e.getValue()+"";
+            return;
+        }
+        for (int i = 0; i < numpad.length; i++) {
+            if (numpad[i].getId() == v.getId()) {
+                expressionString += i + "";
+                addText(text_Result,i+"");
+                text_smallResult.setText(expressionString);
             }
         }
 
-        //Listener cho tung nut
-        switch (v.getId()){
-
+        switch (v.getId()) {
             case R.id.button_numpad_dot:
-                addText(text_Result,".");
                 expressionString += ".";
+                addText(text_Result, ".");
+                text_smallResult.setText(expressionString);
                 break;
-
-            //Math
             case R.id.button_Math_plus:
-                if(expressionString.equals("")){
-                    expressionString = resultString;
-                    expressionString += " + ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
-                else{
-                    expressionString += " + ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
+                expressionString += " + ";
+                text_smallResult.setText(expressionString);
                 break;
             case R.id.button_Math_minus:
-                if(expressionString.equals("")){
-                    expressionString = resultString;
-                    expressionString += " - ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
-                else{
-                    expressionString += " - ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
+                expressionString += " - ";
+                text_smallResult.setText(expressionString);
                 break;
             case R.id.button_Math_multiply:
-                if(expressionString.equals("")){
-                    expressionString = resultString;
-                    expressionString += " * ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
-                else{
-                    expressionString += " * ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
+                expressionString += " * ";
+                text_smallResult.setText(expressionString);
                 break;
             case R.id.button_Math_divide:
-                if(expressionString.equals("")){
-                    expressionString = resultString;
-                    expressionString += " / ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
-                else{
-                    expressionString += " / ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
+                expressionString += " / ";
+                text_smallResult.setText(expressionString);
                 break;
             case R.id.button_Math_mod:
-                if(expressionString.equals("")){
-                    expressionString = resultString;
-                    expressionString += " % ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
-                else{
-                    expressionString += " % ";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText("");
-                }
-                break;
-
-            //Action
-            //Xu li dau =
-            //*******************************************************************************
-            case R.id.button_action_equal:
-                if(     !Expression.containEqual(expressionString)   //neu ko co dau = thi moi chay
-                        &&  Expression.containOperator(expressionString) //neu bieu thuc chi co 1 so thi ko chay
-                        ) {
-                    Expression expression = new Expression(expressionString);
-                    expression.solve();
-                    expressionString += " = " + expression.solve();
-                    resultString = expression.getValue()+"";
-                    text_Result.setText((int) expression.getValue() + "");
-                    //resultString = expressionString;
-                }
-                else{
-                    expressionString = text_Result.getText().toString();
-                    resultString = expressionString;
-                }
+                expressionString += " % ";
                 text_smallResult.setText(expressionString);
-                expressionString = "";
-                break;
-            //********************************************************************************
-
-            //xu li M
-            // ********************************************************************************
-            case R.id.buttonMPlus:
-                expressionString = text_Result.getText().toString();
-                M.Mplus(Double.parseDouble(expressionString));
-                text_Result.setText("0");
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.buttonMMinus:
-                expressionString = text_Result.getText().toString();
-                M.Mminus(Double.parseDouble(expressionString));
-                text_Result.setText("0");
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.buttonMS:
-                expressionString = text_Result.getText().toString();
-                M.MSave(Double.parseDouble(expressionString));
-                text_Result.setText("0");
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.buttonMR:
-                expressionString = M.MResult()+"";
-                text_Result.setText(expressionString);
-                break;
-            case R.id.buttonMC:
-                M.MClear();
-                text_Result.setText("0");
-                break;
-
-            //button Back
-            case R.id.button_action_back:
-                if(expressionString.length() < 2)  {
-                    expressionString = "";
-                    text_smallResult.setText(expressionString);
-                    text_Result.setText(expressionString);
-                }
-                else{
-                    if(!Expression.containEqual(expressionString)) {
-                        if (Expression.containOperator(expressionString)) {
-                            if(Expression.containOperator(Expression.getLastString(expressionString))){
-                                expressionString = expressionString.substring(0, expressionString.length()-3);
-                                text_smallResult.setText(expressionString);
-                            }
-                            else{
-                                expressionString = expressionString.substring(0, expressionString.length()-1);
-                                text_smallResult.setText(expressionString);
-                                text_Result.setText(Expression.getLastString(expressionString));
-                            }
-                        }
-                        else{
-                            expressionString = expressionString.substring(0, expressionString.length()-1);
-                            text_smallResult.setText(expressionString);
-                            text_Result.setText(expressionString);
-                        }
-                    }
-                }
-                break;
-            case R.id.button_action_CE:
-                expressionString = "0";
-                text_Result.setText(expressionString);
-                break;
-            case R.id.button_action_C:
-                expressionString = "0";
-                text_Result.setText(expressionString);
-                expressionString = "";
-                text_smallResult.setText(expressionString);
-                break;
-            default:
                 break;
         }
+        switch (v.getId()){
+            //xoa tat ca
+            case R.id.button_action_C:
+                expressionString="";
+                text_smallResult.setText("");
+                text_Result.setText("");
+                break;
+            //xoa phan tu cuoi
+            case R.id.button_action_CE:
+                if(expressionString.equals("")||expressionString.equals("0")) break;
+                String temp = Expression.getLastString(expressionString);
+                if(Check.isNumber(temp)){
+                    int temp_length = temp.length();
+                    expressionString = expressionString.substring(0,expressionString.length()-temp_length);
+                }
+                else{
+                    expressionString = expressionString.substring(0,expressionString.length()-3);
+                }
+                text_smallResult.setText(expressionString);
+                break;
+        }
+        if(!Check.isNumber(Expression.getLastString(expressionString))){
+            text_Result.setText("");
+        }
+        if(expressionString==""){
+            expressionString="0";
+            text_Result.setText(expressionString);
+            text_smallResult.setText(expressionString);
+        }
+
     }
 
 
