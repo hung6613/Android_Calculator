@@ -20,7 +20,7 @@ import com.example.applycation.calculator.memory.Memory;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Memory M = new Memory();
-    //*********************************************************************************************
+
     String expressionString = "";
     String resultString = "";
     TextView text_Result,text_smallResult;
@@ -123,24 +123,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //cai dat Listener
     @Override
     public void onClick(View v) {
-        //*
-        //khong dung cho truong button equal
-        //Neu bieu thuc o smallResult chua dau = thi moi lan goi Listener se gan lai ket qua o Result cho smallResult
 
-        /*if(     v.getId()!=R.id.button_action_equal
-                &&  Expression.containEqual(text_smallResult.getText().toString())
-                ){
-            expressionString = text_Result.getText().toString();
-            text_smallResult.setText(expressionString);
-        }*/
-
-        //Khong su dung
-        //*
-        //Neu phan tu cuoi cung khong phai la toan tu thi xoa smallResult va nhap lai.
-        /*if(!Check.isOperator(Expression.getLastString(text_smallResult.getText().toString()))){
-            text_smallResult.setText("");
-        }*/
-
+        //Listener for numpad
         for(int i=0;i<numpad.length;i++){
             if(v.getId()==numpad[i].getId()){
                 if(Expression.containEqual(text_smallResult.getText().toString())){
@@ -158,54 +142,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Listener cho tung nut
         switch (v.getId()){
 
-            //Numpad
-            /*case R.id.button_numpad_0 :
-                if(Expression.containEqual(text_smallResult.getText().toString())){
-                    text_Result.setText("0");
-                    text_smallResult.setText("0");
-                    expressionString += "0";
-                }
-                else {
-                    addText(text_Result,"0");
-                    expressionString += "0";
-                }
-                break;
-            case R.id.button_numpad_1 :
-                addText(text_Result,"1");
-                expressionString += "1";
-                break;
-            case R.id.button_numpad_2 :
-                addText(text_Result,"2");
-                expressionString += "2";
-                break;
-            case R.id.button_numpad_3 :
-                addText(text_Result,"3");
-                expressionString += "3";
-                break;
-            case R.id.button_numpad_4 :
-                addText(text_Result,"4");
-                expressionString += "4";
-                break;
-            case R.id.button_numpad_5 :
-                addText(text_Result,"5");
-                expressionString += "5";
-                break;
-            case R.id.button_numpad_6 :
-                addText(text_Result,"6");
-                expressionString += "6";
-                break;
-            case R.id.button_numpad_7 :
-                addText(text_Result,"7");
-                expressionString += "7";
-                break;
-            case R.id.button_numpad_8 :
-                addText(text_Result,"8");
-                expressionString += "8";
-                break;
-            case R.id.button_numpad_9 :
-                addText(text_Result,"9");
-                expressionString += "9";
-                break;*/
             case R.id.button_numpad_dot:
                 addText(text_Result,".");
                 expressionString += ".";
