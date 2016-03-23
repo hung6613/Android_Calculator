@@ -121,15 +121,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(action_Equal.getId()==v.getId()&&expressionString!=""){
             Expression e = new Expression(expressionString);
-            e.solve();
-            text_Result.setText(e.getValue()+"");
-            text_smallResult.setText(expressionString+ " = " +e.getValue());
-            expressionString = e.getValue()+"";
+            try {
+                e.solve();
+                text_Result.setText(e.getValue() + "");
+                text_smallResult.setText(expressionString + " = " + e.getValue());
+                expressionString = e.getValue() + "";
+            }catch (Exception ex){
+                text_smallResult.setText("");
+                text_Result.setText("LỖI");
+                expressionString="invalid";
+            }
             return;
         }
         for (int i = 0; i < numpad.length; i++) {
             if (numpad[i].getId() == v.getId()) {
-                if(Expression.containEqual(text_smallResult.getText()+"")){
+                if(Expression.containEqual(text_smallResult.getText()+"")||expressionString.equals("invalid")){
                     expressionString="";
                     text_Result.setText("");
                 }
