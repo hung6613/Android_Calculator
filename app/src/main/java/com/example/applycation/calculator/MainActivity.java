@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Memory M = new Memory();
     //*********************************************************************************************
     String expressionString = "";
+    String resultString = "";
     TextView text_Result,text_smallResult;
     Button numpad[],numpadDot;
     Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
@@ -126,12 +127,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //khong dung cho truong button equal
         //Neu bieu thuc o smallResult chua dau = thi moi lan goi Listener se gan lai ket qua o Result cho smallResult
 
-        if(     v.getId()!=R.id.button_action_equal
+        /*if(     v.getId()!=R.id.button_action_equal
                 &&  Expression.containEqual(text_smallResult.getText().toString())
                 ){
             expressionString = text_Result.getText().toString();
             text_smallResult.setText(expressionString);
-        }
+        }*/
 
         //Khong su dung
         //*
@@ -145,8 +146,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //Numpad
             case R.id.button_numpad_0 :
-                addText(text_Result,"0");
-                expressionString += "0";
+                if(Expression.containEqual(text_smallResult.getText().toString())){
+                    text_Result.setText("0");
+                    text_smallResult.setText("0");
+                    expressionString += "0";
+                }
+                else {
+                    addText(text_Result,"0");
+                    expressionString += "0";
+                }
                 break;
             case R.id.button_numpad_1 :
                 addText(text_Result,"1");
@@ -191,9 +199,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //Math
             case R.id.button_Math_plus:
-                expressionString += " + ";
-                text_smallResult.setText(expressionString);
-                text_Result.setText("");
+                if(expressionString.equals("")){
+                    expressionString = resultString;
+                    expressionString += " + ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
+                else{
+                    expressionString += " + ";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText("");
+                }
                 break;
             case R.id.button_Math_minus:
                 expressionString += " - ";
@@ -220,20 +236,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //Xu li dau =
             //*******************************************************************************
             case R.id.button_action_equal:
-
                 if(     !Expression.containEqual(expressionString)   //neu ko co dau = thi moi chay
                         &&  Expression.containOperator(expressionString) //neu bieu thuc chi co 1 so thi ko chay
-
                         ) {
                     Expression expression = new Expression(expressionString);
                     expression.solve();
                     expressionString += " = " + expression.solve();
+                    resultString = expression.getValue()+"";
                     text_Result.setText((int) expression.getValue() + "");
+                    //resultString = expressionString;
                 }
                 else{
                     expressionString = text_Result.getText().toString();
+                    resultString = expressionString;
                 }
                 text_smallResult.setText(expressionString);
+                expressionString = "";
                 break;
             //********************************************************************************
 
@@ -266,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 text_Result.setText("0");
                 break;
 
-            //
+            //button Back
             case R.id.button_action_back:
                 String string_Text = "";
                 if(expressionString.length() < 2)  {
