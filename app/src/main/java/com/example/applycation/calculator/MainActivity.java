@@ -15,11 +15,11 @@ import android.widget.TextView;
 
 import com.example.applycation.calculator.expression.Check;
 import com.example.applycation.calculator.expression.Expression;
-import com.example.applycation.calculator.memory.Memory;
+//import com.example.applycation.calculator.memory.Memory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Memory M = new Memory();
+
 
     String expressionString = "";
     String resultString = "";
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
     Button action_Equal,action_CE,action_C, action_Back;
 
-    Button m_Plus, m_Minus, m_Clear, m_Result, m_Save, m_Memory;
+  //  Button m_Plus, m_Minus, m_Clear, m_Result, m_Save, m_Memory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +75,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action_C = (Button)findViewById(R.id.button_action_C);
         action_Back = (Button)findViewById(R.id.button_action_back);
         //M
-        m_Clear = (Button)findViewById(R.id.buttonMC);
+       /* m_Clear = (Button)findViewById(R.id.buttonMC);
         m_Memory = (Button)findViewById(R.id.buttonMScroll);
         m_Minus = (Button)findViewById(R.id.buttonMMinus);
         m_Plus = (Button)findViewById(R.id.buttonMPlus);
         m_Result = (Button)findViewById(R.id.buttonMR);
         m_Save = (Button)findViewById(R.id.buttonMS);
-
+*/
     }
     //gan Listener vao cac doi tuong
     public void attachOnClickListener(){
@@ -106,13 +106,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         action_Back.setOnClickListener(this);
 
         //M
-        m_Save.setOnClickListener(this);
+      /*  m_Save.setOnClickListener(this);
         m_Minus.setOnClickListener(this);
         m_Result.setOnClickListener(this);
         m_Memory.setOnClickListener(this);
         m_Clear.setOnClickListener(this);
         m_Plus.setOnClickListener(this);
-
+*/
     }
     //Them noi dung vao TextView
     public void addText(TextView textView,String content){
@@ -239,32 +239,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //xu li M
             // ********************************************************************************
-            case R.id.buttonMPlus:
+           /* case R.id.buttonMPlus:
                 expressionString = text_Result.getText().toString();
-                M.Mplus(Double.parseDouble(expressionString));
+                //M.Mplus(Double.parseDouble(expressionString));
                 text_Result.setText("0");
                 text_smallResult.setText(expressionString);
                 break;
             case R.id.buttonMMinus:
                 expressionString = text_Result.getText().toString();
-                M.Mminus(Double.parseDouble(expressionString));
+                //M.Mminus(Double.parseDouble(expressionString));
                 text_Result.setText("0");
                 text_smallResult.setText(expressionString);
                 break;
             case R.id.buttonMS:
                 expressionString = text_Result.getText().toString();
-                M.MSave(Double.parseDouble(expressionString));
+                //M.MSave(Double.parseDouble(expressionString));
                 text_Result.setText("0");
                 text_smallResult.setText(expressionString);
                 break;
             case R.id.buttonMR:
-                expressionString = M.MResult()+"";
+                //expressionString = M.MResult()+"";
                 text_Result.setText(expressionString);
                 break;
             case R.id.buttonMC:
-                M.MClear();
+                //M.MClear();
                 text_Result.setText("0");
-                break;
+                break;*/
 
             //button Back
             case R.id.button_action_back:
