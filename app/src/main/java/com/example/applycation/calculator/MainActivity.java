@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         attachIdToView();
         attachOnClickListener();
 
-        text_Result.setText("0");
+        text_Result.setText("");
         text_smallResult.setText("");
     }
     //gan View vao cac doi tuong
@@ -141,11 +141,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             text_smallResult.setText("");
         }*/
 
+        for(int i=0;i<numpad.length;i++){
+            if(v.getId()==numpad[i].getId()){
+                if(Expression.containEqual(text_smallResult.getText().toString())){
+                    text_Result.setText(i+"");
+                    text_smallResult.setText(i+"");
+                    expressionString += i+"";
+                }
+                else {
+                    addText(text_Result,i+"");
+                    expressionString += i+"";
+                }
+            }
+        }
+
         //Listener cho tung nut
         switch (v.getId()){
 
             //Numpad
-            case R.id.button_numpad_0 :
+            /*case R.id.button_numpad_0 :
                 if(Expression.containEqual(text_smallResult.getText().toString())){
                     text_Result.setText("0");
                     text_smallResult.setText("0");
@@ -191,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_numpad_9 :
                 addText(text_Result,"9");
                 expressionString += "9";
-                break;
+                break;*/
             case R.id.button_numpad_dot:
                 addText(text_Result,".");
                 expressionString += ".";
