@@ -21,11 +21,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button numpad[],numpadDot;
 
-    Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod;
+    Button math_Plus,math_Minus,math_Multi,math_Divide,math_Mod,math_DaoDau;
 
     Button action_Equal,action_CE,action_C, action_Back;
 
     Button math_sqrt,math_mu2,math_1chiaX;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         math_sqrt = (Button)findViewById(R.id.button_Math_sqrt);
         math_mu2 = (Button)findViewById(R.id.button_Math_xmu2);
         math_1chiaX = (Button)findViewById(R.id.button_Math_1phanX);
+        math_DaoDau = (Button)findViewById(R.id.button_Math_DaoDau);
 
         //action
         action_Equal = (Button)findViewById(R.id.button_action_equal);
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         math_sqrt.setOnClickListener(this);
         math_mu2.setOnClickListener(this);
         math_1chiaX.setOnClickListener(this);
+        math_DaoDau.setOnClickListener(this);
 
         //action
         action_Equal.setOnClickListener(this);
@@ -187,6 +190,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 text_smallResult.setText(expressionString);
                 text_Result.setText(Expression.getLastString(expressionString));
                 break;
+            case R.id.button_Math_DaoDau:
+                String tempDD_str = Expression.getLastString(expressionString);
+                double tempDD = Double.parseDouble(tempDD_str);
+                if(tempDD==0) break;
+                tempDD= BasicMath.reverse(tempDD);
+                int tempDD_length = tempDD_str.length();
+                expressionString = expressionString.substring(0,expressionString.length()-tempDD_length) + tempDD;
+                text_smallResult.setText(expressionString);
+                text_Result.setText(Expression.getLastString(expressionString));
+                break;
+
 
         }
         switch (v.getId()){
