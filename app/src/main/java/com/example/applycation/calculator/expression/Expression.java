@@ -23,7 +23,6 @@ public class Expression {
         while(scanner.hasNext())
             temp = scanner.next();
         return temp;
-
     }
     public String getExpression() {
         return expression;

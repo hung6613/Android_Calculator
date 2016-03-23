@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Memory M = new Memory();
     //*********************************************************************************************
-    String string_Text = "";
     String expressionString = "";
     TextView text_Result,text_smallResult;
     Button numpad[],numpadDot;
@@ -238,29 +237,76 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             //********************************************************************************
 
+            //xu li M
+            // ********************************************************************************
+            case R.id.buttonMPlus:
+                expressionString = text_Result.getText().toString();
+                M.Mplus(Double.parseDouble(expressionString));
+                text_Result.setText("0");
+                text_smallResult.setText(expressionString);
+                break;
+            case R.id.buttonMMinus:
+                expressionString = text_Result.getText().toString();
+                M.Mminus(Double.parseDouble(expressionString));
+                text_Result.setText("0");
+                text_smallResult.setText(expressionString);
+                break;
+            case R.id.buttonMS:
+                expressionString = text_Result.getText().toString();
+                M.MSave(Double.parseDouble(expressionString));
+                text_Result.setText("0");
+                text_smallResult.setText(expressionString);
+                break;
+            case R.id.buttonMR:
+                expressionString = M.MResult()+"";
+                text_Result.setText(expressionString);
+                break;
+            case R.id.buttonMC:
+                M.MClear();
+                text_Result.setText("0");
+                break;
 
+            //
             case R.id.button_action_back:
-                string_Text = text_Result.getText().toString();
-                expressionString = text_smallResult.getText().toString();
-                //String str_Back = string_Text.substring(0,string_Text.length()-2).toString();
-                //text_Result.setText(str_Back);
-                if(string_Text.length()>1){
-                    String str_Back = string_Text.substring(0,string_Text.length()-1).toString();
-                    String str_BackSmall = expressionString.substring(0, expressionString.length()-1).toString();
-                    text_Result.setText(str_Back);
-                    text_smallResult.setText(str_BackSmall);
+                String string_Text = "";
+                if(expressionString.length() < 2)  {
+                    expressionString = "";
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(expressionString);
                 }
                 else{
-                    text_Result.setText("0");
+                    if(!Expression.containEqual(expressionString)) {
+                        if (Expression.containOperator(expressionString)) {
+                            if(Expression.containOperator(Expression.getLastString(expressionString))){
+                                expressionString = expressionString.substring(0, expressionString.length()-3);
+                                text_smallResult.setText(expressionString);
+                            }
+                            else{
+                                expressionString = expressionString.substring(0, expressionString.length()-1);
+                                text_smallResult.setText(expressionString);
+                                string_Text = Expression.getLastString(expressionString).substring(0,Expression.getLastString(expressionString).length()-1);
+                                text_Result.setText(string_Text);
+                            }
+                        }
+                        else{
+                            expressionString = expressionString.substring(0, expressionString.length()-1);
+                            text_smallResult.setText(expressionString);
+                            text_Result.setText(expressionString);
+                        }
+                    }
                 }
+
+
                 break;
             case R.id.button_action_CE:
-                //text_smallResult.setText("");
-                text_Result.setText("0");
+                expressionString = "0";
+                text_Result.setText(expressionString);
                 break;
             case R.id.button_action_C:
-                text_smallResult.setText("");
-                text_Result.setText("0");
+                expressionString = "0";
+                text_Result.setText(expressionString);
+                expressionString = "";
+                text_smallResult.setText(expressionString);
                 break;
             default:
                 break;
