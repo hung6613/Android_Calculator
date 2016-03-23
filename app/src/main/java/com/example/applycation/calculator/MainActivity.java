@@ -1,12 +1,8 @@
 package com.example.applycation.calculator;
 
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.applycation.calculator.expression.Check;
 import com.example.applycation.calculator.expression.Expression;
-import com.example.applycation.calculator.memory.Memory;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button action_Equal,action_CE,action_C, action_Back;
 
+    Button math_sqrt,math_mu2,math_1chiaX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         math_Multi = (Button)findViewById(R.id.button_Math_multiply);
         math_Divide = (Button)findViewById(R.id.button_Math_divide);
         math_Mod = (Button)findViewById(R.id.button_Math_mod);
+        math_sqrt = (Button)findViewById(R.id.button_Math_sqrt);
+        math_mu2 = (Button)findViewById(R.id.button_Math_xmu2);
+        math_1chiaX = (Button)findViewById(R.id.button_Math_1phanX);
 
         //action
         action_Equal = (Button)findViewById(R.id.button_action_equal);
@@ -93,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         math_Multi.setOnClickListener(this);
         math_Divide.setOnClickListener(this);
         math_Mod.setOnClickListener(this);
+        math_sqrt.setOnClickListener(this);
+        math_mu2.setOnClickListener(this);
+        math_1chiaX.setOnClickListener(this);
 
         //action
         action_Equal.setOnClickListener(this);
@@ -154,6 +156,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 expressionString += " % ";
                 text_smallResult.setText(expressionString);
                 break;
+            case R.id.button_Math_1phanX:
+                String temp_str = Expression.getLastString(expressionString);
+                double temp = Double.parseDouble(temp_str);
+                if(temp==0) break;
+                temp=1/temp;
+                int temp_length = temp_str.length();
+                expressionString = expressionString.substring(0,expressionString.length()-temp_length) + temp;
+                text_smallResult.setText(expressionString);
+                text_Result.setText(Expression.getLastString(expressionString));
+                break;
         }
         switch (v.getId()){
             //xoa tat ca
@@ -174,6 +186,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     expressionString = expressionString.substring(0,expressionString.length()-3);
                 }
                 text_smallResult.setText(expressionString);
+                break;
+            case R.id.button_action_back:
+                if(expressionString.equals("")||expressionString.equals("0")) break;
+                if(Check.isNumber(Expression.getLastString(expressionString)))
+                    expressionString=expressionString.substring(0,expressionString.length()-1);
+                else
+                    expressionString=expressionString.substring(0,expressionString.length()-3);
+                text_smallResult.setText(expressionString);
+                text_Result.setText(Expression.getLastString(expressionString));
                 break;
         }
         if(!Check.isNumber(Expression.getLastString(expressionString))){
