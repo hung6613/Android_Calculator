@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.applycation.calculator.expression.Check;
 import com.example.applycation.calculator.expression.Expression;
+import com.example.applycation.calculator.mathHandler.BasicMath;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -157,15 +158,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 text_smallResult.setText(expressionString);
                 break;
             case R.id.button_Math_1phanX:
-                String temp_str = Expression.getLastString(expressionString);
-                double temp = Double.parseDouble(temp_str);
-                if(temp==0) break;
-                temp=1/temp;
-                int temp_length = temp_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-temp_length) + temp;
+                String tempX_str = Expression.getLastString(expressionString);
+                double tempX = Double.parseDouble(tempX_str);
+                if(tempX==0) break;
+                tempX=1/tempX;
+                int temp_length = tempX_str.length();
+                expressionString = expressionString.substring(0,expressionString.length()-temp_length) + tempX;
                 text_smallResult.setText(expressionString);
                 text_Result.setText(Expression.getLastString(expressionString));
                 break;
+            case R.id.button_Math_xmu2:
+                String tempMu_str = Expression.getLastString(expressionString);
+                double tempMu = Double.parseDouble(tempMu_str);
+                if(tempMu==0) break;
+                tempMu= BasicMath.xMu2(tempMu);
+                int tempMu_length = tempMu_str.length();
+                expressionString = expressionString.substring(0,expressionString.length()-tempMu_length) + tempMu;
+                text_smallResult.setText(expressionString);
+                text_Result.setText(Expression.getLastString(expressionString));
+                break;
+
         }
         switch (v.getId()){
             //xoa tat ca
