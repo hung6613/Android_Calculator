@@ -268,7 +268,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //button Back
             case R.id.button_action_back:
-                String string_Text = "";
                 if(expressionString.length() < 2)  {
                     expressionString = "";
                     text_smallResult.setText(expressionString);
@@ -284,8 +283,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             else{
                                 expressionString = expressionString.substring(0, expressionString.length()-1);
                                 text_smallResult.setText(expressionString);
-                                string_Text = Expression.getLastString(expressionString).substring(0,Expression.getLastString(expressionString).length()-1);
-                                text_Result.setText(string_Text);
+                                text_Result.setText(Expression.getLastString(expressionString));
                             }
                         }
                         else{
@@ -295,8 +293,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 }
-
-
                 break;
             case R.id.button_action_CE:
                 expressionString = "0";
