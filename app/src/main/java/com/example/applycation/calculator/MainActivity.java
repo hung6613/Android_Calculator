@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     //gan Listener vao cac doi tuong
     public void attachOnClickListener(){
-
+        // hung chim to
         //numpad
         for(int i=0;i<numpad.length;i++){
             numpad[i].setOnClickListener(this);
