@@ -177,6 +177,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 text_smallResult.setText(expressionString);
                 text_Result.setText(Expression.getLastString(expressionString));
                 break;
+            case R.id.button_Math_sqrt:
+                String tempSQRT_str = Expression.getLastString(expressionString);
+                double tempSQRT = Double.parseDouble(tempSQRT_str);
+                if(tempSQRT==0) break;
+                tempSQRT= BasicMath.sqrtX(tempSQRT);
+                int tempSQRT_length = tempSQRT_str.length();
+                expressionString = expressionString.substring(0,expressionString.length()-tempSQRT_length) + tempSQRT;
+                text_smallResult.setText(expressionString);
+                text_Result.setText(Expression.getLastString(expressionString));
+                break;
 
         }
         switch (v.getId()){
