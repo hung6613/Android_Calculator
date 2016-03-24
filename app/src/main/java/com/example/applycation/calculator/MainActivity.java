@@ -251,6 +251,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             //xoa phan tu cuoi
             case R.id.button_action_CE:
+                if(expressionString.equals("invalid")) expressionString="";
                 if(expressionString.equals("")||expressionString.equals("0")) break;
                 String temp = Expression.getLastString(expressionString);
                 if(Check.isNumber(temp)){
@@ -275,6 +276,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(!Check.isNumber(Expression.getLastString(expressionString))){
             text_Result.setText("");
         }
+        if(expressionString.contains("invalid")) expressionString="";
         expressionString=Expression.wipeDuplicateZero(expressionString);
         text_smallResult.setText(expressionString);
         text_Result.setText(Expression.getLastString(expressionString));
