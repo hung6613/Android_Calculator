@@ -1,6 +1,10 @@
 package com.example.applycation.calculator;
 
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -119,10 +123,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView.setText(oldText + content);
     }
 
-
+    public void starColorAnimaton(View v,int color){
+        int colorStar = Color.WHITE;
+        int colorEnd = color;
+        ValueAnimator valueAnimator = ObjectAnimator.ofInt(
+                v,"backgroundColor",colorStar,colorEnd
+        );
+        valueAnimator.setDuration(100);
+        valueAnimator.setEvaluator(new ArgbEvaluator());
+        valueAnimator.setRepeatCount(1);
+        valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        valueAnimator.start();
+    }
     //cai dat Listener
     @Override
     public void onClick(View v) {
+
+        starColorAnimaton(v, Color.BLUE);
 
         if(action_Equal.getId()==v.getId()&&expressionString!=""){
             Expression e = new Expression(expressionString);
