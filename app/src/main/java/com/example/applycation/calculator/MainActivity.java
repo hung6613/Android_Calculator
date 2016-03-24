@@ -146,9 +146,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Expression e = new Expression(expressionString);
             try {
                 e.solve();
-                text_Result.setText(e.getValue() + "");
-                text_smallResult.setText(expressionString + " = " + e.getValue());
-                expressionString = e.getValue() + "";
+                text_Result.setText(e.getValueString());
+                text_smallResult.setText(expressionString + " = " + e.getValueString());
+                expressionString = e.getValueString();
             }catch (Exception ex){
                 text_smallResult.setText("");
                 text_Result.setText("LỖI");
