@@ -8,9 +8,9 @@
     <string name="button_action_CE">CE</string>
     <string name="button_action_C">C</string>
     <string name="button_action_BACK">⌫</string>
-    <string name="button_math_divide">/</string>
-    <string name="button_math_multiply">X</string>
-    <string name="button_math_minus">-</string>
+    <string name="button_math_divide">÷</string>
+    <string name="button_math_multiply">✕</string>
+    <string name="button_math_minus">−</string>
     <string name="button_math_plus">+</string>
     <string name="button_numpad_7">7</string>
     <string name="button_numpad_4">4</string>
@@ -21,7 +21,7 @@
     <string name="button_numpad_9">9</string>
     <string name="button_numpad_6">6</string>
     <string name="button_numpad_3">3</string>
-    <string name="button_math_DaoDau">-+</string>
+    <string name="button_math_DaoDau">±</string>
     <string name="button_numpad_0">0</string>
     <string name="button_numpad_Dot">.</string>
     <string name="button_action_equal">=</string>
