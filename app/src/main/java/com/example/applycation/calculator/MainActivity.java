@@ -1,6 +1,10 @@
 package com.example.applycation.calculator;
 
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,7 +19,7 @@ import com.example.applycation.calculator.expression.BasicMath;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String expressionString = "";
+    String expressionString;
 
     TextView text_Result,text_smallResult;
 
@@ -28,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button math_sqrt,math_mu2,math_1chiaX;
 
 
+    //FLAG
+    private boolean isInputPhrase_Math;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         attachIdToView();
         attachOnClickListener();
 
-        text_Result.setText("");
-        text_smallResult.setText("");
+        isInputPhrase_Math=true;
+
+        expressionString="0";
+        text_Result.setText("0");
+        text_smallResult.setText("0");
     }
     //gan View vao cac doi tuong
     public void attachIdToView(){
@@ -114,18 +124,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView.setText(oldText + content);
     }
 
-
+    public void starColorAnimaton(View v,int color){
+        int colorStar = Color.WHITE;
+        int colorEnd = color;
+        ValueAnimator valueAnimator = ObjectAnimator.ofInt(
+                v,"backgroundColor",colorStar,colorEnd
+        );
+        valueAnimator.setDuration(100);
+        valueAnimator.setEvaluator(new ArgbEvaluator());
+        valueAnimator.setRepeatCount(1);
+        valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        valueAnimator.start();
+    }
     //cai dat Listener
     @Override
     public void onClick(View v) {
+
+        starColorAnimaton(v, 0xFF55AAFF);
 
         if(action_Equal.getId()==v.getId()&&expressionString!=""){
             Expression e = new Expression(expressionString);
             try {
                 e.solve();
-                text_Result.setText(e.getValue() + "");
-                text_smallResult.setText(expressionString + " = " + e.getValue());
-                expressionString = e.getValue() + "";
+                text_Result.setText(e.getValueString());
+                text_smallResult.setText(expressionString + " = " + e.getValueString());
+                expressionString = e.getValueString();
             }catch (Exception ex){
                 text_smallResult.setText("");
                 text_Result.setText("LỖI");
@@ -142,78 +165,86 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 expressionString += i + "";
                 addText(text_Result, i + "");
                 text_smallResult.setText(expressionString);
-
+                isInputPhrase_Math=true;
             }
         }
-
-        switch (v.getId()) {
-            case R.id.button_numpad_dot:
-                expressionString += ".";
-                addText(text_Result, ".");
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_plus:
-                expressionString += " + ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_minus:
-                expressionString += " - ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_multiply:
-                expressionString += " * ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_divide:
-                expressionString += " / ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_mod:
-                expressionString += " % ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_1phanX:
-                String tempX_str = Expression.getLastString(expressionString);
-                double tempX = Double.parseDouble(tempX_str);
-                if(tempX==0) break;
-                tempX=1/tempX;
-                int temp_length = tempX_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-temp_length) + tempX;
-                text_smallResult.setText(expressionString);
-                text_Result.setText(Expression.getLastString(expressionString));
-                break;
-            case R.id.button_Math_xmu2:
-                String tempMu_str = Expression.getLastString(expressionString);
-                double tempMu = Double.parseDouble(tempMu_str);
-                if(tempMu==0) break;
-                tempMu= BasicMath.xMu2(tempMu);
-                int tempMu_length = tempMu_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-tempMu_length) + tempMu;
-                text_smallResult.setText(expressionString);
-                text_Result.setText(Expression.getLastString(expressionString));
-                break;
-            case R.id.button_Math_sqrt:
-                String tempSQRT_str = Expression.getLastString(expressionString);
-                double tempSQRT = Double.parseDouble(tempSQRT_str);
-                if(tempSQRT==0) break;
-                tempSQRT= BasicMath.sqrtX(tempSQRT);
-                int tempSQRT_length = tempSQRT_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-tempSQRT_length) + tempSQRT;
-                text_smallResult.setText(expressionString);
-                text_Result.setText(Expression.getLastString(expressionString));
-                break;
-            case R.id.button_Math_DaoDau:
-                String tempDD_str = Expression.getLastString(expressionString);
-                double tempDD = Double.parseDouble(tempDD_str);
-                if(tempDD==0) break;
-                tempDD= BasicMath.reverse(tempDD);
-                int tempDD_length = tempDD_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-tempDD_length) + tempDD;
-                text_smallResult.setText(expressionString);
-                text_Result.setText(Expression.getLastString(expressionString));
-                break;
-
-
+        if (v.getId()==R.id.button_numpad_dot) {
+            expressionString += ".";
+            addText(text_Result, ".");
+            text_smallResult.setText(expressionString);
+        }
+        if(isInputPhrase_Math) {
+            switch (v.getId()) {
+                case R.id.button_Math_plus:
+                    expressionString += " + ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_minus:
+                    expressionString += " - ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_multiply:
+                    expressionString += " * ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_divide:
+                    expressionString += " / ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_mod:
+                    expressionString += " % ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_1phanX:
+                    if(expressionString.equals("invalid")) break;
+                    String tempX_str = Expression.getLastString(expressionString);
+                    double tempX = Double.parseDouble(tempX_str);
+                    if (tempX == 0) break;
+                    tempX = 1 / tempX;
+                    int temp_length = tempX_str.length();
+                    expressionString = expressionString.substring(0, expressionString.length() - temp_length) + tempX;
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(Expression.getLastString(expressionString));
+                    break;
+                case R.id.button_Math_xmu2:
+                    if(expressionString.equals("invalid")) break;
+                    String tempMu_str = Expression.getLastString(expressionString);
+                    double tempMu = Double.parseDouble(tempMu_str);
+                    if (tempMu == 0) break;
+                    tempMu = BasicMath.xMu2(tempMu);
+                    int tempMu_length = tempMu_str.length();
+                    expressionString = expressionString.substring(0, expressionString.length() - tempMu_length) + tempMu;
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(Expression.getLastString(expressionString));
+                    break;
+                case R.id.button_Math_sqrt:
+                    if(expressionString.equals("invalid")) break;
+                    String tempSQRT_str = Expression.getLastString(expressionString);
+                    double tempSQRT = Double.parseDouble(tempSQRT_str);
+                    if (tempSQRT == 0) break;
+                    tempSQRT = BasicMath.sqrtX(tempSQRT);
+                    int tempSQRT_length = tempSQRT_str.length();
+                    expressionString = expressionString.substring(0, expressionString.length() - tempSQRT_length) + tempSQRT;
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(Expression.getLastString(expressionString));
+                    break;
+                case R.id.button_Math_DaoDau:
+                    if(expressionString.equals("invalid")) break;
+                    String tempDD_str = Expression.getLastString(expressionString);
+                    double tempDD = Double.parseDouble(tempDD_str);
+                    if (tempDD == 0) break;
+                    tempDD = BasicMath.reverse(tempDD);
+                    int tempDD_length = tempDD_str.length();
+                    expressionString = expressionString.substring(0, expressionString.length() - tempDD_length) + tempDD;
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(Expression.getLastString(expressionString));
+                    break;
+            }
         }
         switch (v.getId()){
             //xoa tat ca
@@ -224,6 +255,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             //xoa phan tu cuoi
             case R.id.button_action_CE:
+                if(expressionString.equals("invalid")) expressionString="";
                 if(expressionString.equals("")||expressionString.equals("0")) break;
                 String temp = Expression.getLastString(expressionString);
                 if(Check.isNumber(temp)){
@@ -236,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 text_smallResult.setText(expressionString);
                 break;
             case R.id.button_action_back:
+                if(expressionString.equals("invalid")) expressionString="";
                 if(expressionString.equals("")||expressionString.equals("0")) break;
                 if(Check.isNumber(Expression.getLastString(expressionString)))
                     expressionString=expressionString.substring(0,expressionString.length()-1);
@@ -248,6 +281,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(!Check.isNumber(Expression.getLastString(expressionString))){
             text_Result.setText("");
         }
+
+        if(expressionString.contains("invalid")) expressionString="";
+        expressionString=Expression.wipeDuplicateZero(expressionString);
+        text_smallResult.setText(expressionString);
+        text_Result.setText(Expression.getLastString(expressionString));
         if(expressionString==""){
             expressionString="0";
             text_Result.setText(expressionString);
