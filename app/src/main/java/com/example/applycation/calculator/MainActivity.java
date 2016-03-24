@@ -201,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     isInputPhrase_Math = false;
                     break;
                 case R.id.button_Math_1phanX:
+                    if(expressionString.equals("invalid")) break;
                     String tempX_str = Expression.getLastString(expressionString);
                     double tempX = Double.parseDouble(tempX_str);
                     if (tempX == 0) break;
@@ -211,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     text_Result.setText(Expression.getLastString(expressionString));
                     break;
                 case R.id.button_Math_xmu2:
+                    if(expressionString.equals("invalid")) break;
                     String tempMu_str = Expression.getLastString(expressionString);
                     double tempMu = Double.parseDouble(tempMu_str);
                     if (tempMu == 0) break;
@@ -221,6 +223,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     text_Result.setText(Expression.getLastString(expressionString));
                     break;
                 case R.id.button_Math_sqrt:
+                    if(expressionString.equals("invalid")) break;
                     String tempSQRT_str = Expression.getLastString(expressionString);
                     double tempSQRT = Double.parseDouble(tempSQRT_str);
                     if (tempSQRT == 0) break;
@@ -231,6 +234,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     text_Result.setText(Expression.getLastString(expressionString));
                     break;
                 case R.id.button_Math_DaoDau:
+                    if(expressionString.equals("invalid")) break;
                     String tempDD_str = Expression.getLastString(expressionString);
                     double tempDD = Double.parseDouble(tempDD_str);
                     if (tempDD == 0) break;
@@ -264,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 text_smallResult.setText(expressionString);
                 break;
             case R.id.button_action_back:
+                if(expressionString.equals("invalid")) expressionString="";
                 if(expressionString.equals("")||expressionString.equals("0")) break;
                 if(Check.isNumber(Expression.getLastString(expressionString)))
                     expressionString=expressionString.substring(0,expressionString.length()-1);
@@ -276,6 +281,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(!Check.isNumber(Expression.getLastString(expressionString))){
             text_Result.setText("");
         }
+
         if(expressionString.contains("invalid")) expressionString="";
         expressionString=Expression.wipeDuplicateZero(expressionString);
         text_smallResult.setText(expressionString);
