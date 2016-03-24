@@ -39,8 +39,8 @@ public class Expression {
     public void setValue(double value) {
         this.value = value;
     }
-    private boolean isDouble(double x){
-        return (x - (int)x) != 0.0;
+    private static boolean isDouble(double x){
+        return (x - (int)x) != 0;
     }
     public String getValueString(){
         if(isDouble(value)){
@@ -48,10 +48,22 @@ public class Expression {
             int count=0;
             for(;count<result.length();count++)
                 if(result.charAt(count)=='.') break;
-            if(count<4&&result.length()>count+4)return result.substring(0,count+5);
+            if(count<4)
+                if(result.length()>count+4)return result.substring(0,count+5);
+                else return result;
             return result.substring(0,count*2+1);
         }
         else return (int)value+"";
+    }
+    public static String getValueType(String str){
+        if(Check.isNumber(str)){
+            double value=Double.parseDouble(str);
+            if(isDouble(value)){
+
+            }
+            else str = (int)value+"";
+        }
+        return str;
     }
     public static boolean containEqual(String str){
         for(int i=0;i<str.length();i++)

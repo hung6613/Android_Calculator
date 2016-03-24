@@ -203,22 +203,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.button_Math_1phanX:
                     if(expressionString.equals("invalid")) break;
                     String tempX_str = Expression.getLastString(expressionString);
+                    int temp_length = tempX_str.length();
                     double tempX = Double.parseDouble(tempX_str);
                     if (tempX == 0) break;
-                    tempX = 1 / tempX;
-                    int temp_length = tempX_str.length();
-                    expressionString = expressionString.substring(0, expressionString.length() - temp_length) + tempX;
+                    double tempXResult = 1 / tempX;
+                    expressionString = expressionString.substring(0, expressionString.length() - temp_length) + Expression.getValueType(tempXResult+"");
                     text_smallResult.setText(expressionString);
                     text_Result.setText(Expression.getLastString(expressionString));
                     break;
                 case R.id.button_Math_xmu2:
                     if(expressionString.equals("invalid")) break;
                     String tempMu_str = Expression.getLastString(expressionString);
+                    int tempMu_length = tempMu_str.length();
                     double tempMu = Double.parseDouble(tempMu_str);
                     if (tempMu == 0) break;
                     tempMu = BasicMath.xMu2(tempMu);
-                    int tempMu_length = tempMu_str.length();
-                    expressionString = expressionString.substring(0, expressionString.length() - tempMu_length) + tempMu;
+                    expressionString = expressionString.substring(0, expressionString.length() - tempMu_length) + Expression.getValueType(tempMu+"");
                     text_smallResult.setText(expressionString);
                     text_Result.setText(Expression.getLastString(expressionString));
                     break;
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (tempSQRT == 0) break;
                     tempSQRT = BasicMath.sqrtX(tempSQRT);
                     int tempSQRT_length = tempSQRT_str.length();
-                    expressionString = expressionString.substring(0, expressionString.length() - tempSQRT_length) + tempSQRT;
+                    expressionString = expressionString.substring(0, expressionString.length() - tempSQRT_length) + Expression.getValueType(tempSQRT+"");
                     text_smallResult.setText(expressionString);
                     text_Result.setText(Expression.getLastString(expressionString));
                     break;
@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (tempDD == 0) break;
                     tempDD = BasicMath.reverse(tempDD);
                     int tempDD_length = tempDD_str.length();
-                    expressionString = expressionString.substring(0, expressionString.length() - tempDD_length) + tempDD;
+                    expressionString = expressionString.substring(0, expressionString.length() - tempDD_length) + Expression.getValueType(tempDD+"");
                     text_smallResult.setText(expressionString);
                     text_Result.setText(Expression.getLastString(expressionString));
                     break;
