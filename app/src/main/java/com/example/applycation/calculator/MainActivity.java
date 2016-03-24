@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button math_sqrt,math_mu2,math_1chiaX;
 
 
+    //FLAG
+    private boolean isInputPhrase_Math;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         attachIdToView();
         attachOnClickListener();
+
+        isInputPhrase_Math=true;
 
         text_Result.setText("");
         text_smallResult.setText("");
@@ -142,78 +147,82 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 expressionString += i + "";
                 addText(text_Result, i + "");
                 text_smallResult.setText(expressionString);
-
+                isInputPhrase_Math=true;
             }
         }
-
-        switch (v.getId()) {
-            case R.id.button_numpad_dot:
-                expressionString += ".";
-                addText(text_Result, ".");
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_plus:
-                expressionString += " + ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_minus:
-                expressionString += " - ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_multiply:
-                expressionString += " * ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_divide:
-                expressionString += " / ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_mod:
-                expressionString += " % ";
-                text_smallResult.setText(expressionString);
-                break;
-            case R.id.button_Math_1phanX:
-                String tempX_str = Expression.getLastString(expressionString);
-                double tempX = Double.parseDouble(tempX_str);
-                if(tempX==0) break;
-                tempX=1/tempX;
-                int temp_length = tempX_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-temp_length) + tempX;
-                text_smallResult.setText(expressionString);
-                text_Result.setText(Expression.getLastString(expressionString));
-                break;
-            case R.id.button_Math_xmu2:
-                String tempMu_str = Expression.getLastString(expressionString);
-                double tempMu = Double.parseDouble(tempMu_str);
-                if(tempMu==0) break;
-                tempMu= BasicMath.xMu2(tempMu);
-                int tempMu_length = tempMu_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-tempMu_length) + tempMu;
-                text_smallResult.setText(expressionString);
-                text_Result.setText(Expression.getLastString(expressionString));
-                break;
-            case R.id.button_Math_sqrt:
-                String tempSQRT_str = Expression.getLastString(expressionString);
-                double tempSQRT = Double.parseDouble(tempSQRT_str);
-                if(tempSQRT==0) break;
-                tempSQRT= BasicMath.sqrtX(tempSQRT);
-                int tempSQRT_length = tempSQRT_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-tempSQRT_length) + tempSQRT;
-                text_smallResult.setText(expressionString);
-                text_Result.setText(Expression.getLastString(expressionString));
-                break;
-            case R.id.button_Math_DaoDau:
-                String tempDD_str = Expression.getLastString(expressionString);
-                double tempDD = Double.parseDouble(tempDD_str);
-                if(tempDD==0) break;
-                tempDD= BasicMath.reverse(tempDD);
-                int tempDD_length = tempDD_str.length();
-                expressionString = expressionString.substring(0,expressionString.length()-tempDD_length) + tempDD;
-                text_smallResult.setText(expressionString);
-                text_Result.setText(Expression.getLastString(expressionString));
-                break;
-
-
+        if (v.getId()==R.id.button_numpad_dot) {
+            expressionString += ".";
+            addText(text_Result, ".");
+            text_smallResult.setText(expressionString);
+        }
+        if(isInputPhrase_Math) {
+            switch (v.getId()) {
+                case R.id.button_Math_plus:
+                    expressionString += " + ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_minus:
+                    expressionString += " - ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_multiply:
+                    expressionString += " * ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_divide:
+                    expressionString += " / ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_mod:
+                    expressionString += " % ";
+                    text_smallResult.setText(expressionString);
+                    isInputPhrase_Math = false;
+                    break;
+                case R.id.button_Math_1phanX:
+                    String tempX_str = Expression.getLastString(expressionString);
+                    double tempX = Double.parseDouble(tempX_str);
+                    if (tempX == 0) break;
+                    tempX = 1 / tempX;
+                    int temp_length = tempX_str.length();
+                    expressionString = expressionString.substring(0, expressionString.length() - temp_length) + tempX;
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(Expression.getLastString(expressionString));
+                    break;
+                case R.id.button_Math_xmu2:
+                    String tempMu_str = Expression.getLastString(expressionString);
+                    double tempMu = Double.parseDouble(tempMu_str);
+                    if (tempMu == 0) break;
+                    tempMu = BasicMath.xMu2(tempMu);
+                    int tempMu_length = tempMu_str.length();
+                    expressionString = expressionString.substring(0, expressionString.length() - tempMu_length) + tempMu;
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(Expression.getLastString(expressionString));
+                    break;
+                case R.id.button_Math_sqrt:
+                    String tempSQRT_str = Expression.getLastString(expressionString);
+                    double tempSQRT = Double.parseDouble(tempSQRT_str);
+                    if (tempSQRT == 0) break;
+                    tempSQRT = BasicMath.sqrtX(tempSQRT);
+                    int tempSQRT_length = tempSQRT_str.length();
+                    expressionString = expressionString.substring(0, expressionString.length() - tempSQRT_length) + tempSQRT;
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(Expression.getLastString(expressionString));
+                    break;
+                case R.id.button_Math_DaoDau:
+                    String tempDD_str = Expression.getLastString(expressionString);
+                    double tempDD = Double.parseDouble(tempDD_str);
+                    if (tempDD == 0) break;
+                    tempDD = BasicMath.reverse(tempDD);
+                    int tempDD_length = tempDD_str.length();
+                    expressionString = expressionString.substring(0, expressionString.length() - tempDD_length) + tempDD;
+                    text_smallResult.setText(expressionString);
+                    text_Result.setText(Expression.getLastString(expressionString));
+                    break;
+            }
         }
         switch (v.getId()){
             //xoa tat ca
