@@ -19,7 +19,7 @@ import com.example.applycation.calculator.expression.BasicMath;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String expressionString = "";
+    String expressionString;
 
     TextView text_Result,text_smallResult;
 
@@ -45,8 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         isInputPhrase_Math=true;
 
-        text_Result.setText("");
-        text_smallResult.setText("");
+        expressionString="0";
+        text_Result.setText("0");
+        text_smallResult.setText("0");
     }
     //gan View vao cac doi tuong
     public void attachIdToView(){
