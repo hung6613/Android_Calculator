@@ -46,64 +46,6 @@
             android:layout_weight="25" />
 
     </LinearLayout>
-    <!-- <LinearLayout
-         android:id="@+id/layout_M"
-         android:orientation="horizontal"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_above="@+id/layout_numpad"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentStart="true"
-         android:weightSum="120">
-         <Button
-             android:layout_weight="20"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="MC"
-             android:id="@+id/buttonMC"
-             android:background="@drawable/boder"
-             android:textSize="20sp" />
-         <Button
-             android:layout_weight="20"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="MR"
-             android:id="@+id/buttonMR"
-             android:background="@drawable/boder"
-             android:textSize="20sp" />
-         <Button
-             android:layout_weight="20"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="M+"
-             android:id="@+id/buttonMPlus"
-             android:background="@drawable/boder"
-             android:textSize="20sp" />
-         <Button
-             android:layout_weight="20"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="M-"
-             android:id="@+id/buttonMMinus"
-             android:background="@drawable/boder"
-             android:textSize="20sp" />
-         <Button
-             android:layout_weight="20"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="MS"
-             android:id="@+id/buttonMS"
-             android:background="@drawable/boder"
-             android:textSize="20sp" />
-         <Button
-             android:layout_weight="20"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="M"
-             android:id="@+id/buttonMScroll"
-             android:background="@drawable/boder"
-             android:textSize="20sp" />
-     </LinearLayout>-->
     <TableLayout
         android:id="@+id/layout_numpad"
         android:layout_width="match_parent"
