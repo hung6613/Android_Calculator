@@ -248,6 +248,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(!Check.isNumber(Expression.getLastString(expressionString))){
             text_Result.setText("");
         }
+        expressionString=Expression.wipeDuplicateZero(expressionString);
+        text_smallResult.setText(expressionString);
+        text_Result.setText(Expression.getLastString(expressionString));
         if(expressionString==""){
             expressionString="0";
             text_Result.setText(expressionString);

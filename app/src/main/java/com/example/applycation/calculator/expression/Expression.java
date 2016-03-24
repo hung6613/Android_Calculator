@@ -53,6 +53,17 @@ public class Expression {
         }
         return false;
     }
+    public static String wipeDuplicateZero(String str){
+        String newStr="";
+        Scanner scanner= new Scanner(str);
+        while(scanner.hasNext()){
+            String temp = scanner.next();
+            if(temp.length()>1&&temp.charAt(0)=='0'&&temp.charAt(1)!='.')
+                temp = temp.substring(1);
+            newStr += Check.isNumber(temp) ? temp : " " + temp + " ";
+        }
+        return newStr;
+    }
     public double solve(){
         Infix expression_infix = new Infix(expression);
         Postfix expression_postfix = new Postfix(expression_infix.toPostfix());
