@@ -58,7 +58,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="%"
+                android:text="@string/button_math_mod"
                 android:id="@+id/button_Math_mod"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -66,7 +66,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="sqrt"
+                android:text="@string/button_math_SQRT"
                 android:id="@+id/button_Math_sqrt"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -75,7 +75,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x^2"
+                android:text="@string/button_math_pow2"
                 android:id="@+id/button_Math_xmu2"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -83,7 +83,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1/x"
+                android:text="@string/button_math_divideX"
                 android:id="@+id/button_Math_1phanX"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -93,7 +93,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CE"
+                android:text="@string/button_action_CE"
                 android:id="@+id/button_action_CE"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -101,7 +101,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="C"
+                android:text="@string/button_action_C"
                 android:id="@+id/button_action_C"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -109,7 +109,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="back"
+                android:text="@string/button_action_BACK"
                 android:id="@+id/button_action_back"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -117,7 +117,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="/"
+                android:text="@string/button_math_divide"
                 android:id="@+id/button_Math_divide"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -127,7 +127,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="7"
+                android:text="@string/button_numpad_7"
                 android:id="@+id/button_numpad_7"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -135,7 +135,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8"
+                android:text="@string/button_numpad_8"
                 android:id="@+id/button_numpad_8"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -143,7 +143,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9"
+                android:text="@string/button_numpad_9"
                 android:id="@+id/button_numpad_9"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -151,7 +151,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x"
+                android:text="@string/button_math_multiply"
                 android:id="@+id/button_Math_multiply"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -161,7 +161,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4"
+                android:text="@string/button_numpad_4"
                 android:id="@+id/button_numpad_4"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -169,7 +169,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5"
+                android:text="@string/button_numpad_5"
                 android:id="@+id/button_numpad_5"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -177,7 +177,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6"
+                android:text="@string/button_numpad_6"
                 android:id="@+id/button_numpad_6"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -185,7 +185,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
+                android:text="@string/button_math_minus"
                 android:id="@+id/button_Math_minus"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -195,7 +195,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="@string/button_numpad_1"
                 android:id="@+id/button_numpad_1"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -203,7 +203,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
+                android:text="@string/button_numpad_2"
                 android:id="@+id/button_numpad_2"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -211,7 +211,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3"
+                android:text="@string/button_numpad_3"
                 android:id="@+id/button_numpad_3"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -219,7 +219,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+"
+                android:text="@string/button_math_plus"
                 android:id="@+id/button_Math_plus"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -229,7 +229,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-+"
+                android:text="@string/button_math_DaoDau"
                 android:id="@+id/button_Math_DaoDau"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -237,7 +237,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/button_numpad_0"
                 android:id="@+id/button_numpad_0"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -245,7 +245,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="."
+                android:text="@string/button_numpad_Dot"
                 android:id="@+id/button_numpad_dot"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
@@ -253,7 +253,7 @@
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="="
+                android:text="@string/button_action_equal"
                 android:id="@+id/button_action_equal"
                 android:background="@drawable/boder"
                 android:textSize="@dimen/buttondimen" />
