@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        starColorAnimaton(v, Color.BLUE);
+        starColorAnimaton(v, 0xFF55AAFF);
 
         if(action_Equal.getId()==v.getId()&&expressionString!=""){
             Expression e = new Expression(expressionString);
