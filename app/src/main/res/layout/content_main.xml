@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/layout_M"
+        android:layout_above="@+id/layout_numpad"
         android:weightSum="100"
         android:background="@drawable/linearlayoutboder">
         <com.example.applycation.calculator.autoResizeText.AutoResizeTextView
@@ -46,67 +46,64 @@
             android:layout_weight="25" />
 
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout_M"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/layout_numpad"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:weightSum="120">
-
-        <Button
-            android:layout_weight="20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MC"
-            android:id="@+id/buttonMC"
-            android:background="@drawable/boder"
-            android:textSize="20sp" />
-
-        <Button
-            android:layout_weight="20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MR"
-            android:id="@+id/buttonMR"
-            android:background="@drawable/boder"
-            android:textSize="20sp" />
-        <Button
-            android:layout_weight="20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="M+"
-            android:id="@+id/buttonMPlus"
-            android:background="@drawable/boder"
-            android:textSize="20sp" />
-        <Button
-            android:layout_weight="20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="M-"
-            android:id="@+id/buttonMMinus"
-            android:background="@drawable/boder"
-            android:textSize="20sp" />
-        <Button
-            android:layout_weight="20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MS"
-            android:id="@+id/buttonMS"
-            android:background="@drawable/boder"
-            android:textSize="20sp" />
-        <Button
-            android:layout_weight="20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="M"
-            android:id="@+id/buttonMScroll"
-            android:background="@drawable/boder"
-            android:textSize="20sp" />
-
-    </LinearLayout>
+    <!-- <LinearLayout
+         android:id="@+id/layout_M"
+         android:orientation="horizontal"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_above="@+id/layout_numpad"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentStart="true"
+         android:weightSum="120">
+         <Button
+             android:layout_weight="20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="MC"
+             android:id="@+id/buttonMC"
+             android:background="@drawable/boder"
+             android:textSize="20sp" />
+         <Button
+             android:layout_weight="20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="MR"
+             android:id="@+id/buttonMR"
+             android:background="@drawable/boder"
+             android:textSize="20sp" />
+         <Button
+             android:layout_weight="20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="M+"
+             android:id="@+id/buttonMPlus"
+             android:background="@drawable/boder"
+             android:textSize="20sp" />
+         <Button
+             android:layout_weight="20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="M-"
+             android:id="@+id/buttonMMinus"
+             android:background="@drawable/boder"
+             android:textSize="20sp" />
+         <Button
+             android:layout_weight="20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="MS"
+             android:id="@+id/buttonMS"
+             android:background="@drawable/boder"
+             android:textSize="20sp" />
+         <Button
+             android:layout_weight="20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="M"
+             android:id="@+id/buttonMScroll"
+             android:background="@drawable/boder"
+             android:textSize="20sp" />
+     </LinearLayout>-->
     <TableLayout
         android:id="@+id/layout_numpad"
         android:layout_width="match_parent"
@@ -122,7 +119,7 @@
                 android:text="%"
                 android:id="@+id/button_Math_mod"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -130,7 +127,7 @@
                 android:text="sqrt"
                 android:id="@+id/button_Math_sqrt"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
 
             <Button
                 android:layout_weight="10"
@@ -139,7 +136,7 @@
                 android:text="x^2"
                 android:id="@+id/button_Math_xmu2"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -147,7 +144,7 @@
                 android:text="1/x"
                 android:id="@+id/button_Math_1phanX"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
         </TableRow>
         <TableRow>
             <Button
@@ -157,7 +154,7 @@
                 android:text="CE"
                 android:id="@+id/button_action_CE"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -165,7 +162,7 @@
                 android:text="C"
                 android:id="@+id/button_action_C"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -173,7 +170,7 @@
                 android:text="back"
                 android:id="@+id/button_action_back"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -181,7 +178,7 @@
                 android:text="/"
                 android:id="@+id/button_Math_divide"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
         </TableRow>
         <TableRow>
             <Button
@@ -191,7 +188,7 @@
                 android:text="7"
                 android:id="@+id/button_numpad_7"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -199,7 +196,7 @@
                 android:text="8"
                 android:id="@+id/button_numpad_8"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -207,7 +204,7 @@
                 android:text="9"
                 android:id="@+id/button_numpad_9"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -215,7 +212,7 @@
                 android:text="x"
                 android:id="@+id/button_Math_multiply"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
         </TableRow>
         <TableRow>
             <Button
@@ -225,7 +222,7 @@
                 android:text="4"
                 android:id="@+id/button_numpad_4"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -233,7 +230,7 @@
                 android:text="5"
                 android:id="@+id/button_numpad_5"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -241,7 +238,7 @@
                 android:text="6"
                 android:id="@+id/button_numpad_6"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -249,7 +246,7 @@
                 android:text="-"
                 android:id="@+id/button_Math_minus"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
         </TableRow>
         <TableRow>
             <Button
@@ -259,7 +256,7 @@
                 android:text="1"
                 android:id="@+id/button_numpad_1"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -267,7 +264,7 @@
                 android:text="2"
                 android:id="@+id/button_numpad_2"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -275,7 +272,7 @@
                 android:text="3"
                 android:id="@+id/button_numpad_3"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -283,7 +280,7 @@
                 android:text="+"
                 android:id="@+id/button_Math_plus"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
         </TableRow>
         <TableRow>
             <Button
@@ -293,7 +290,7 @@
                 android:text="-+"
                 android:id="@+id/button_Math_DaoDau"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -301,7 +298,7 @@
                 android:text="0"
                 android:id="@+id/button_numpad_0"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -309,7 +306,7 @@
                 android:text="."
                 android:id="@+id/button_numpad_dot"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
             <Button
                 android:layout_weight="10"
                 android:layout_width="wrap_content"
@@ -317,7 +314,7 @@
                 android:text="="
                 android:id="@+id/button_action_equal"
                 android:background="@drawable/boder"
-                android:textSize="20sp" />
+                android:textSize="@dimen/buttondimen" />
         </TableRow>
 
     </TableLayout>
