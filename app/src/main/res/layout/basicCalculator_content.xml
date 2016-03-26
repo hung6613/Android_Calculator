@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.applycation.calculator.MainActivity"
-    tools:showIn="@layout/activity_main"
+    tools:context=".activities.BasicCalculator_Activity"
+    tools:showIn="@layout/basicCalculator_main"
     ><LinearLayout
         android:id="@+id/layout_output"
         android:orientation="vertical"
